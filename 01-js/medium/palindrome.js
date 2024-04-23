@@ -6,8 +6,28 @@
   - `npm run test-palindrome`
 */
 
-function isPalindrome(str) {
-  return true;
+function isAlphabet(c) {
+  return c >= "a" && c <= "z";
 }
 
+function isPalindrome(str) {
+  str = str.toLowerCase();
+  strWithOnlyChars = "";
+  for (let i = 0; i < str.length; i++) {
+    if (isAlphabet(str[i])) {
+      strWithOnlyChars += str[i];
+    }
+  }
+  // console.log(strWithOnlyChars);
+  for (let i = 0; i < strWithOnlyChars.length / 2; i++) {
+    if (
+      strWithOnlyChars[i] != strWithOnlyChars[strWithOnlyChars.length - i - 1]
+    ) {
+      // console.log(i);
+      return false;
+    }
+  }
+  return true;
+}
+// console.log(isPalindrome("A man a plan a canal Panama"));
 module.exports = isPalindrome;
